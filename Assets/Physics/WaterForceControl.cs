@@ -86,9 +86,11 @@ public class WaterForceControl : MonoBehaviour {
 	//
 
 	private void UpdateCollider(Collider2D coll, bool add) {
+		if (coll.isTrigger) {
+			return;
+		}
+
 		Bounds bounds = coll.bounds;
-		float xmax = bounds.max.x;
-		float ymax = bounds.max.y;
 
 		Pixel pixmin = PointToPixel (new Vector2 (bounds.min.x, bounds.min.y));
 		Pixel pixmax = PointToPixel (new Vector2 (bounds.max.x, bounds.max.y));
@@ -107,9 +109,11 @@ public class WaterForceControl : MonoBehaviour {
 	}
 
 	private void UpdateDynamic(Collider2D coll, Rigidbody2D r, bool add){
+		if (coll.isTrigger) {
+			return;
+		}
+
 		Bounds bounds = coll.bounds;
-		float xmax = bounds.max.x;
-		float ymax = bounds.max.y;
 
 		Pixel pixmin = PointToPixel (new Vector2 (bounds.min.x, bounds.min.y));
 		Pixel pixmax = PointToPixel (new Vector2 (bounds.max.x, bounds.max.y));
@@ -149,18 +153,6 @@ public class WaterForceControl : MonoBehaviour {
 				}
 			}
 		}
-	}
-
-	//
-	// Change the fluid
-	//
-	private void AddVelocity (Pixel pix, Vector2 velocity) {
-		pixels_velocityx [pix.x, pix.y] += velocity.x;
-		pixels_velocityy [pix.x, pix.y] += velocity.y;
-	}
-
-	private void AddDensity (Pixel pix, float density) {
-		pixels_density [pix.x, pix.y] += density;
 	}
 
 	//
@@ -425,6 +417,10 @@ public class WaterForceControl : MonoBehaviour {
 
 		float dt = Time.deltaTime;
 
+		if (affectors != null) {
+			affectors ();
+		}
+
 		diffuse(1, pixels_velocityInitialx, pixels_velocityx, viscosity, dt);
 		diffuse(2, pixels_velocityInitialy, pixels_velocityy, viscosity, dt);
 
@@ -486,7 +482,7 @@ public class WaterForceControl : MonoBehaviour {
 		pixels_velocityx [pospix.x, pospix.y] = velocity.x;
 		pixels_velocityy [pospix.x, pospix.y] = velocity.y;
 
-		MakeBubbles (pos, 0.3f);
+		MakeBubbles (pos-velocity.normalized*0.3f, 0.3f*velocity.magnitude);
 	}
 
 	//
@@ -500,4 +496,42 @@ public class WaterForceControl : MonoBehaviour {
 		bubblePos.position = new Vector3 (v.x, v.y, 0);
 		bubbleEmit.Emit (UnityEngine.Random.Range(0, (int)(howmuch * bubbleamount)));
 	}
+
+	//
+	// Area affectors
+	//
+
+	public Pixel[] ToPixels(Collider2D coll) {
+		List<Pixel> pixels = new List<Pixel>();
+
+		Bounds bounds = coll.bounds;
+
+		Pixel pixmin = PointToPixel (new Vector2 (bounds.min.x, bounds.min.y));
+		Pixel pixmax = PointToPixel (new Vector2 (bounds.max.x, bounds.max.y));
+		for (int x = pixmin.x; x <= pixmax.x; x++) {
+			for (int y = pixmin.y; y <= pixmax.y; y++) {
+				Vector2 point = pixels_point3D[x,y];
+				if (coll.OverlapPoint (point)) {
+					pixels.Add (new Pixel (x, y));
+				}
+			}
+		}
+
+		return pixels.ToArray();
+	}
+
+	//
+	// Change the fluid  - ONLY as part of an affector
+	//
+	public void AddVelocity (Pixel pix, Vector2 velocity) {
+		pixels_velocityx [pix.x, pix.y] += velocity.x;
+		pixels_velocityy [pix.x, pix.y] += velocity.y;
+	}
+
+	public void AddDensity (Pixel pix, float density) {
+		pixels_density [pix.x, pix.y] += density;
+	}
+
+	public delegate void DoAffect();
+	public event DoAffect affectors;
 }
