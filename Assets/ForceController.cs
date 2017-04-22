@@ -7,6 +7,8 @@ public class ForceController : MonoBehaviour {
 	private WaterForceControl wfc;
 	private Vector2 lastpos2D;
 
+	public float forcefactor = 100f;
+
 	// Use this for initialization
 	void Start () {
 		wfc = GameObject.FindGameObjectWithTag ("fluidsim").GetComponent<WaterForceControl>();
@@ -20,7 +22,7 @@ public class ForceController : MonoBehaviour {
 		//Debug.Log (worldpos2D);
 
 		if (Input.GetKey (KeyCode.Mouse0)) {
-			wfc.PushAt (worldpos2D, (worldpos2D - lastpos2D) * 100);//new Vector2(100, 0));//;
+			wfc.PushAt (worldpos2D, (worldpos2D - lastpos2D) * forcefactor);//new Vector2(100, 0));//;
 		}
 		lastpos2D = worldpos2D;
 	}
