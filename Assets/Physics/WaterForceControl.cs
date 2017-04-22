@@ -27,11 +27,19 @@ public class WaterForceControl : MonoBehaviour {
 	private float[,] pixels_velocityInitialx;
 	private float[,] pixels_velocityInitialy;
 	private int[,] pixels_collidercount;
+	private int[,] pixels_dynamiccount;
+	private Vector2[,] pixels_initialvelocity;
+	//private Vector2[,] pixels_deltavelocity;
 	private Vector2[,] pixels_point3D;
 
 	private float[,] tempdiv;
 	private float[,] tempp;
 
+	private DynObj[] dynamics;
+
+	// Unity velocity => water velocity
+	public float magicnumber = 0.001f;
+	public float forcefeedback = 0.8f;
 
 	//
 	// Position Logic
@@ -46,6 +54,12 @@ public class WaterForceControl : MonoBehaviour {
 			this.x = x;
 			this.y = y;
 		}
+	}
+
+	public struct DynObj
+	{
+		public Collider2D coll;
+		public Rigidbody2D rig;
 	}
 
 	private Pixel PointToPixel(Vector2 point){
@@ -92,6 +106,51 @@ public class WaterForceControl : MonoBehaviour {
 		}
 	}
 
+	private void UpdateDynamic(Collider2D coll, Rigidbody2D r, bool add){
+		Bounds bounds = coll.bounds;
+		float xmax = bounds.max.x;
+		float ymax = bounds.max.y;
+
+		Pixel pixmin = PointToPixel (new Vector2 (bounds.min.x, bounds.min.y));
+		Pixel pixmax = PointToPixel (new Vector2 (bounds.max.x, bounds.max.y));
+
+		int cellcount=0;
+		if (!add) {
+			// Normalize pixels_deltavelocity => divide by the number of cells
+			for (int x = pixmin.x; x <= pixmax.x; x++) {
+				for (int y = pixmin.y; y <= pixmax.y; y++) {
+					Vector2 point = pixels_point3D [x, y];
+					if (coll.OverlapPoint (point)) {
+						cellcount++;
+					}
+				}
+			}
+		}
+
+		for (int x = pixmin.x; x <= pixmax.x; x++) {
+			for (int y = pixmin.y; y <= pixmax.y; y++) {
+				Vector2 point = pixels_point3D[x,y];
+				if (coll.OverlapPoint (point)) {
+					Vector2 pointVelocity = r.GetPointVelocity (point)*h/N*magicnumber;
+					if (add) {
+						pixels_dynamiccount[x,y]++;
+						pixels_initialvelocity[x, y] = pointVelocity/r.mass;
+						//pixels_deltavelocity[x, y] = new Vector2();
+						pixels_velocityx [x, y] = pixels_initialvelocity [x, y].x;
+						pixels_velocityy [x, y] = pixels_initialvelocity [x, y].y;
+					} else {
+						pixels_dynamiccount[x,y]--;
+						float xdiff = pixels_velocityx [x, y] - pixels_initialvelocity [x, y].x;
+						float ydiff = pixels_velocityy [x, y] - pixels_initialvelocity [x, y].y;
+
+						Vector2 deltavelocity = new Vector2 (xdiff*N/h/magicnumber, ydiff*N/h/magicnumber);
+						r.AddForceAtPosition (deltavelocity/cellcount*r.mass*forcefeedback, point);
+					}
+				}
+			}
+		}
+	}
+
 	//
 	// Change the fluid
 	//
@@ -119,6 +178,8 @@ public class WaterForceControl : MonoBehaviour {
 		pixels_velocityInitialx = new float[N, N];
 		pixels_velocityInitialy = new float[N, N];
 		pixels_collidercount = new int[N, N];
+		pixels_dynamiccount =  new int[N, N];
+		pixels_initialvelocity =  new Vector2[N, N];
 		pixels_point3D = new Vector2[N, N];
 		tempdiv = new float[N, N];
 		tempp = new float[N, N];
@@ -137,8 +198,22 @@ public class WaterForceControl : MonoBehaviour {
 		// Find all collider in the scene
 		Collider2D[] colls = GameObject.FindObjectsOfType<Collider2D>();
 		foreach (Collider2D coll in colls) {
+			if (coll.gameObject.CompareTag ("dynamic")) {
+				continue;
+			}
 			UpdateCollider (coll, true);
 		}
+
+		// Handle all dynamics
+		GameObject[] dynamicsObj = GameObject.FindGameObjectsWithTag("dynamic");
+		List<DynObj> collsDyn = new List<DynObj>();
+		foreach(GameObject go in dynamicsObj) {
+			DynObj dynObj = new DynObj ();
+			dynObj.coll = go.GetComponent<Collider2D> ();
+			dynObj.rig = go.GetComponent<Rigidbody2D> ();
+			collsDyn.Add(dynObj);
+		}
+		dynamics = collsDyn.ToArray();
 	}
 
 	// what = 0 => diffuse
@@ -155,7 +230,9 @@ public class WaterForceControl : MonoBehaviour {
 
 		for (int x = 0; x < N; x++) {
 			for (int y = 0; y < N; y++) {
-				if (pixels_collidercount[x, y] > 0) {
+				bool inwall = pixels_collidercount [x, y] > 0;
+				bool indynamic = pixels_dynamiccount [x, y] > 0;
+				if (inwall) {
 					for (int xd = -1; xd <= 1; xd++) {
 						for (int yd = -1; yd <= 1; yd++) {
 							if (xd == 0 && yd == 0) {
@@ -173,7 +250,7 @@ public class WaterForceControl : MonoBehaviour {
 										int count = 0;
 										if (xd != 0) {
 											if(what == 1){// velocity x
-												valuediff += -items[xother, yother];
+												valuediff += -items [xother, yother];
 												count++;
 											} else {// other stuff (same value)
 												valuediff += items[xother, yother];
@@ -189,7 +266,9 @@ public class WaterForceControl : MonoBehaviour {
 												count++;
 											}
 										}
-										items[x, y]+=valuediff / count;
+
+										// Force back...
+										items [x, y] += valuediff / count;
 									}
 								}
 							}
@@ -338,6 +417,12 @@ public class WaterForceControl : MonoBehaviour {
 	}
 
 	private void FluidStep () {
+		foreach (DynObj dyn in dynamics) {
+			Collider2D coll = dyn.coll;
+			Rigidbody2D rig = dyn.rig;
+			UpdateDynamic (coll, rig, true);
+		}
+
 		float dt = Time.deltaTime;
 
 		diffuse(1, pixels_velocityInitialx, pixels_velocityx, viscosity, dt);
@@ -352,6 +437,13 @@ public class WaterForceControl : MonoBehaviour {
 
 		diffuse(0, pixels_s, pixels_density, diffusion, dt);
 		advect(0, pixels_density, pixels_s, pixels_velocityx, pixels_velocityy, dt);
+
+
+		foreach (DynObj dyn in dynamics) {
+			Collider2D coll = dyn.coll;
+			Rigidbody2D rig = dyn.rig;
+			UpdateDynamic (coll, rig, false);
+		}
 	}
 
 	// Use this for initialization
