@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: efb1c5ef334504d49895796b61dacc5d
-timeCreated: 1492856295
+timeCreated: 1492867370
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,11 @@ TextureImporter:
     21300002: octopus_end_right
     21300004: octopus_tentacle_mid
     21300006: octopus_end_left
+    21300008: octopus_hoofd_dead
+    21300010: blub
+    21300012: plant_1
+    21300014: stone_small
+    21300016: stone_big
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -120,6 +125,71 @@ TextureImporter:
         y: 805
         width: 61
         height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: octopus_hoofd_dead
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 656
+        width: 198
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blub
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 787
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: plant_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 544
+        width: 100
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 3, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stone_small
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 665
+        width: 62
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: stone_big
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 658
+        width: 125
+        height: 93
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
