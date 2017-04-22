@@ -485,5 +485,18 @@ public class WaterForceControl : MonoBehaviour {
 		Pixel pospix = PointToPixel (pos);
 		pixels_velocityx [pospix.x, pospix.y] = velocity.x;
 		pixels_velocityy [pospix.x, pospix.y] = velocity.y;
+
+		MakeBubbles (pos, 0.3f);
+	}
+
+	//
+	// Bubble Psystem
+	//
+	public ParticleSystem bubbleEmit;
+	public Transform bubblePos;
+
+	public void MakeBubbles(Vector2 v, float howmuch) {
+		bubblePos.position = new Vector3 (v.x, v.y, 0);
+		bubbleEmit.Emit (UnityEngine.Random.Range(0, (int)(howmuch * 10f)));
 	}
 }
