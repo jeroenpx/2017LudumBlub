@@ -44,3 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Light
+    uniqueID: 283854171
+    locked: 0
+  - name: LevelFG
+    uniqueID: 4255170603
+    locked: 0
