@@ -499,6 +499,9 @@ MonoBehaviour:
   viscosity: 1
   magicnumber: 0.0025
   forcefeedback: 0.1
+  bubbleEmit: {fileID: 0}
+  bubblePos: {fileID: 0}
+  bubbleamount: 0
 --- !u!4 &377437118
 Transform:
   m_ObjectHideFlags: 0
@@ -523,6 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3e823fdc3b1b14baa1df6d9def631f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forcefactor: 100
 --- !u!4 &425659633 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4979560543478750, guid: 67e32b2ff4ed9ee4697fe24afcaf8c28,
@@ -812,6 +816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631d4df157441fc43aa8cdf232bfac06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useAcceleration: 0
+  acceleration: {x: 0, y: 0}
+  maxSpeed: 0
 --- !u!199 &827847978
 ParticleSystemRenderer:
   serializedVersion: 2
@@ -870,7 +877,7 @@ ParticleSystem:
   m_GameObject: {fileID: 827847976}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -4798,6 +4805,42 @@ Prefab:
     - target: {fileID: 4296199750662280, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881942667825430, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483296745420308, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159633701730988, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653714546936196, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231805719650020, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591919763387708, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586729838958152, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367335362828316, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955954550470662, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 300b66c93f62d4d46bfc8ff01c9d76f6, type: 2}
