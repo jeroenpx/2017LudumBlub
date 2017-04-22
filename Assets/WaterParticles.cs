@@ -7,7 +7,9 @@ public class WaterParticles : MonoBehaviour {
 	private ParticleSystem psys;
 	private WaterForceControl wfc;
 
-	private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[1000];
+	private const int MAXPARTICLE = 2000;
+
+	private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[MAXPARTICLE];
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +23,7 @@ public class WaterParticles : MonoBehaviour {
 		//psys.Emit (1);
 		int size = psys.GetParticles(particles);
 
-		for (int i = 0; i < size && i<1000; i++) {
+		for (int i = 0; i < size && i<MAXPARTICLE; i++) {
 			Vector3 pos3D = particles [i].position;
 			particles [i].velocity = wfc.GetVelocityAt (new Vector2(pos3D.x, pos3D.y))*20f;
 		}
