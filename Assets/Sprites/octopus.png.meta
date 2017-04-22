@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: efb1c5ef334504d49895796b61dacc5d
-timeCreated: 1492867370
+timeCreated: 1492888454
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,7 @@ TextureImporter:
     21300012: plant_1
     21300014: stone_small
     21300016: stone_big
+    21300018: oil_barrel
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -190,6 +191,19 @@ TextureImporter:
         y: 658
         width: 125
         height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: oil_barrel
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 523
+        width: 92
+        height: 120
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
