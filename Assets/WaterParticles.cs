@@ -33,7 +33,6 @@ public class WaterParticles : MonoBehaviour {
 			if(useAcceleration) {
 				// Innefficient
 				float lifedone = particles [i].startLifetime - particles [i].remainingLifetime;
-				Debug.Log (lifedone);
 				speed = lifedone*acceleration;
 				float totalspeed = speed.magnitude;
 				if (totalspeed > maxSpeed) {

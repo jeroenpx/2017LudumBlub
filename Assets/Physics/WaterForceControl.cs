@@ -494,9 +494,10 @@ public class WaterForceControl : MonoBehaviour {
 	//
 	public ParticleSystem bubbleEmit;
 	public Transform bubblePos;
+	public float bubbleamount;
 
 	public void MakeBubbles(Vector2 v, float howmuch) {
 		bubblePos.position = new Vector3 (v.x, v.y, 0);
-		bubbleEmit.Emit (UnityEngine.Random.Range(0, (int)(howmuch * 10f)));
+		bubbleEmit.Emit (UnityEngine.Random.Range(0, (int)(howmuch * bubbleamount)));
 	}
 }
