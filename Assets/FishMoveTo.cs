@@ -45,6 +45,9 @@ public class FishMoveTo : MonoBehaviour {
 			float horizontalVelocity = Vector2.Dot (normalizedOrtho, velocity);
 
 			float acceleration = goalDist * distanceAcceleration - velocityInSameDirection;
+			if (acceleration < 0) {
+				acceleration = 0;
+			}
 			if (acceleration > maxAcceleration) {
 				acceleration = maxAcceleration;
 			}
@@ -59,7 +62,7 @@ public class FishMoveTo : MonoBehaviour {
 				active = false;
 			}
 
-			fishLook.lookDirection = totalForce;
+			fishLook.lookDirection = goalNormalized;
 		} else {
 			fishLook.lookDirection = Vector2.zero;
 		}
