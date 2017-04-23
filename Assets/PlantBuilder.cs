@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if (UNITY_EDITOR) 
+using UnityEditor;
+#endif
 
 public class PlantBuilder : MonoBehaviour {
 
 	public int count;
 	public GameObject plantPiecePrefab;
+
+#if (UNITY_EDITOR) 
 
 	[ContextMenu("Make Plant")]
 	void Make() {
@@ -18,7 +23,7 @@ public class PlantBuilder : MonoBehaviour {
 		Vector3 lastPoint = transform.position;
 		Rigidbody2D lastRigidBody = GetComponent<Rigidbody2D> ();
 		for (int i = 0; i < count; i++) {
-			GameObject piece = GameObject.Instantiate(plantPiecePrefab);
+			GameObject piece = (GameObject) PrefabUtility.InstantiatePrefab (plantPiecePrefab);// GameObject.Instantiate(plantPiecePrefab);
 			Transform origin = piece.transform.Find ("Origin");
 			Transform endpoint = piece.transform.Find ("EndPoint");
 			piece.transform.SetParent (transform);
@@ -42,4 +47,7 @@ public class PlantBuilder : MonoBehaviour {
 
 
 	}
+
+	#endif
+
 }

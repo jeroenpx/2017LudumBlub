@@ -41,14 +41,16 @@ TagManager:
   - 
   - 
   - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Light
     uniqueID: 283854171
-    locked: 1
+    locked: 0
+  - name: Ink
+    uniqueID: 2011740493
+    locked: 0
   - name: LevelFG
     uniqueID: 4255170603
     locked: 0

@@ -9,6 +9,7 @@ public class PlantAffector : MonoBehaviour {
 	private Transform mytransf;
 	private Rigidbody2D rigid;
 	public float factor;
+	public float myvelocfactor;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class PlantAffector : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector2 velocity = wfc.GetVelocityAt (mytransf.position);
-		rigid.AddForce (velocity * factor);
+		Vector2 myveloc = rigid.GetPointVelocity (mytransf.position)*myvelocfactor;
+		rigid.AddForce ((velocity-myveloc)*factor);
 	}
 }

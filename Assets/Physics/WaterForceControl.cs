@@ -119,22 +119,24 @@ public class WaterForceControl : MonoBehaviour {
 		Pixel pixmax = PointToPixel (new Vector2 (bounds.max.x, bounds.max.y));
 
 		int cellcount=0;
-		if (!add) {
-			// Normalize pixels_deltavelocity => divide by the number of cells
-			for (int x = pixmin.x; x <= pixmax.x; x++) {
-				for (int y = pixmin.y; y <= pixmax.y; y++) {
-					Vector2 point = pixels_point3D [x, y];
-					if (coll.OverlapPoint (point)) {
-						cellcount++;
-					}
+		bool foundone;
+
+		// Normalize pixels_deltavelocity => divide by the number of cells
+		for (int x = pixmin.x; x <= pixmax.x; x++) {
+			for (int y = pixmin.y; y <= pixmax.y; y++) {
+				Vector2 point = pixels_point3D [x, y];
+				if (coll.OverlapPoint (point)) {
+					cellcount++;
 				}
 			}
 		}
+		foundone = cellcount > 0;
+		cellcount = (pixmax.x - pixmin.x + 1) * (pixmax.y - pixmin.y + 1);
 
 		for (int x = pixmin.x; x <= pixmax.x; x++) {
 			for (int y = pixmin.y; y <= pixmax.y; y++) {
 				Vector2 point = pixels_point3D[x,y];
-				if (coll.OverlapPoint (point)) {
+				if (coll.OverlapPoint (point) || !foundone) {
 					Vector2 pointVelocity = r.GetPointVelocity (point)*h/N*magicnumber;
 					if (add) {
 						pixels_dynamiccount[x,y]++;
