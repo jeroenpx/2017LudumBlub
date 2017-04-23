@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017525337873436}
   m_LocalRotation: {x: -0, y: -0, z: 0.0000000026193443, w: 1}
-  m_LocalPosition: {x: 1.51, y: -0.28, z: 0}
+  m_LocalPosition: {x: -6.249612, y: -2.4497066, z: 0}
   m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_Children:
   - {fileID: 4985753304654722}
@@ -763,6 +763,9 @@ MonoBehaviour:
   live: 1
   inktrigger: 0.2
   emitcount: 10
+  messageMmm: {fileID: 1661631341242720, guid: a3d97d582d717c94da09e3cede781073, type: 2}
+  messageOw: {fileID: 1856348906621430, guid: d977143a21f9bbc4da355937b5123e2d, type: 2}
+  timeBetweenMessages: 1
 --- !u!114 &114336744775947950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -777,6 +780,7 @@ MonoBehaviour:
   useAcceleration: 0
   acceleration: {x: 0, y: 0}
   maxSpeed: 0
+  liveLostFactor: 0
 --- !u!198 &198140862596242612
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -785,7 +789,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1500433171484554}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1

@@ -17,7 +17,7 @@ public class FishLook : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lastPos = transform.position;
-		prepareForLookAt = Quaternion.Inverse (Quaternion.LookRotation (Vector3.up, Vector3.back));
+		prepareForLookAt = Quaternion.Inverse (Quaternion.LookRotation (Vector3.left, Vector3.back));
 	}
 	
 	// Update is called once per frame

@@ -57,3 +57,6 @@ TagManager:
   - name: LevelFG
     uniqueID: 4255170603
     locked: 0
+  - name: MsgLayer
+    uniqueID: 1742021425
+    locked: 0
