@@ -119,7 +119,7 @@ public class WaterForceControl : MonoBehaviour {
 		Pixel pixmax = PointToPixel (new Vector2 (bounds.max.x, bounds.max.y));
 
 		int cellcount=0;
-		bool foundone;
+		bool foundone = true;
 
 		// Normalize pixels_deltavelocity => divide by the number of cells
 		for (int x = pixmin.x; x <= pixmax.x; x++) {
@@ -130,8 +130,12 @@ public class WaterForceControl : MonoBehaviour {
 				}
 			}
 		}
-		foundone = cellcount > 0;
-		cellcount = (pixmax.x - pixmin.x + 1) * (pixmax.y - pixmin.y + 1);
+
+		// Next line make sure that even tentacles (small) get the speed of a pixel
+		//foundone = cellcount > 0;
+		if (!foundone) {
+			cellcount = (pixmax.x - pixmin.x + 1) * (pixmax.y - pixmin.y + 1);
+		}
 
 		for (int x = pixmin.x; x <= pixmax.x; x++) {
 			for (int y = pixmin.y; y <= pixmax.y; y++) {
@@ -197,17 +201,6 @@ public class WaterForceControl : MonoBehaviour {
 			}
 			UpdateCollider (coll, true);
 		}
-
-		// Handle all dynamics
-		GameObject[] dynamicsObj = GameObject.FindGameObjectsWithTag("dynamic");
-		List<DynObj> collsDyn = new List<DynObj>();
-		foreach(GameObject go in dynamicsObj) {
-			DynObj dynObj = new DynObj ();
-			dynObj.coll = go.GetComponent<Collider2D> ();
-			dynObj.rig = go.GetComponent<Rigidbody2D> ();
-			collsDyn.Add(dynObj);
-		}
-		dynamics = collsDyn.ToArray();
 	}
 
 	// what = 0 => diffuse
@@ -411,6 +404,17 @@ public class WaterForceControl : MonoBehaviour {
 	}
 
 	private void FluidStep () {
+		// Handle all dynamics
+		GameObject[] dynamicsObj = GameObject.FindGameObjectsWithTag("dynamic");
+		List<DynObj> collsDyn = new List<DynObj>();
+		foreach(GameObject go in dynamicsObj) {
+			DynObj dynObj = new DynObj ();
+			dynObj.coll = go.GetComponent<Collider2D> ();
+			dynObj.rig = go.GetComponent<Rigidbody2D> ();
+			collsDyn.Add(dynObj);
+		}
+		dynamics = collsDyn.ToArray();
+
 		foreach (DynObj dyn in dynamics) {
 			Collider2D coll = dyn.coll;
 			Rigidbody2D rig = dyn.rig;
