@@ -9,6 +9,9 @@ public class LevelExit : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (nextLevelName != null) SceneManager.LoadScene(nextLevelName);
+        if (nextLevelName != null && collision.gameObject.name.StartsWith("octopus"))
+        {
+            SceneManager.LoadScene(nextLevelName);
+        }
     }
 }
