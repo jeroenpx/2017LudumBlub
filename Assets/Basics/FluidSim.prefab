@@ -185,6 +185,7 @@ MonoBehaviour:
   useAcceleration: 0
   acceleration: {x: 0, y: 0}
   maxSpeed: 0
+  liveLostFactor: 0.5
 --- !u!114 &114638892425274728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +200,7 @@ MonoBehaviour:
   useAcceleration: 1
   acceleration: {x: 0, y: 0}
   maxSpeed: 4
+  liveLostFactor: 0
 --- !u!114 &114730829629533690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,6 +229,7 @@ MonoBehaviour:
   useAcceleration: 0
   acceleration: {x: 0, y: 0}
   maxSpeed: 0
+  liveLostFactor: 0
 --- !u!198 &198269747196957372
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -235,7 +238,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1279135932501704}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -282,7 +285,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1428149001
+  randomSeed: 670013342
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1080,7 +1083,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       maxGradient:
@@ -1089,7 +1092,7 @@ ParticleSystem:
           rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 16777215
         key2:
           serializedVersion: 2
           rgba: 0
@@ -1116,7 +1119,7 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
+        atime0: 33539
         atime1: 65535
         atime2: 0
         atime3: 0
@@ -2860,7 +2863,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1008963298677554}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -5497,7 +5500,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1754054337063228}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1

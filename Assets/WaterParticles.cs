@@ -13,6 +13,8 @@ public class WaterParticles : MonoBehaviour {
 	public Vector2 acceleration;
 	public float maxSpeed;
 
+	public float liveLostFactor;
+
 	private ParticleSystem.Particle[] particles = new ParticleSystem.Particle[MAXPARTICLE];
 
 	// Use this for initialization
@@ -41,7 +43,11 @@ public class WaterParticles : MonoBehaviour {
 			}
 			//acceleration
 			Vector3 pos3D = particles [i].position;
-			particles [i].velocity = wfc.GetVelocityAt (new Vector2(pos3D.x, pos3D.y))*20f+speed;
+			Vector2 affect = wfc.GetVelocityAt (new Vector2(pos3D.x, pos3D.y))*20f;
+			particles [i].velocity = affect+speed;
+
+			particles [i].remainingLifetime -= affect.magnitude*liveLostFactor;
+
 		}
 
 
