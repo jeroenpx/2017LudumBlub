@@ -37,7 +37,11 @@ public class FishLook : MonoBehaviour {
 		float angle = Quaternion.Angle (lookAt, transform.localRotation);
 		float percent = Mathf.Min(angle, anglesPerSecond* Time.deltaTime)/angle;
 
+		#if UNITY_WEBGL
+		transform.localRotation = lookAt;
+		#else
 		transform.localRotation = Quaternion.Slerp(transform.localRotation, lookAt, percent);
+		#endif
 
 
 
