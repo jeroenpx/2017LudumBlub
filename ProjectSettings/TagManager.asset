@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - fluidsim
   - dynamic
+  - ignorecolliderfluid
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - UI
   - 
   - 
+  - Plant Physics
+  - Walls
   - Octopootjes
-  - 
-  - 
   - 
   - 
   - 
@@ -46,6 +47,9 @@ TagManager:
     locked: 0
   - name: Light
     uniqueID: 283854171
+    locked: 0
+  - name: Ink
+    uniqueID: 2011740493
     locked: 0
   - name: LevelFG
     uniqueID: 4255170603

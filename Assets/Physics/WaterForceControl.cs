@@ -86,7 +86,7 @@ public class WaterForceControl : MonoBehaviour {
 	//
 
 	private void UpdateCollider(Collider2D coll, bool add) {
-		if (coll.isTrigger) {
+		if (coll.isTrigger || coll.gameObject.CompareTag("ignorecolliderfluid")) {
 			return;
 		}
 
@@ -119,22 +119,24 @@ public class WaterForceControl : MonoBehaviour {
 		Pixel pixmax = PointToPixel (new Vector2 (bounds.max.x, bounds.max.y));
 
 		int cellcount=0;
-		if (!add) {
-			// Normalize pixels_deltavelocity => divide by the number of cells
-			for (int x = pixmin.x; x <= pixmax.x; x++) {
-				for (int y = pixmin.y; y <= pixmax.y; y++) {
-					Vector2 point = pixels_point3D [x, y];
-					if (coll.OverlapPoint (point)) {
-						cellcount++;
-					}
+		bool foundone;
+
+		// Normalize pixels_deltavelocity => divide by the number of cells
+		for (int x = pixmin.x; x <= pixmax.x; x++) {
+			for (int y = pixmin.y; y <= pixmax.y; y++) {
+				Vector2 point = pixels_point3D [x, y];
+				if (coll.OverlapPoint (point)) {
+					cellcount++;
 				}
 			}
 		}
+		foundone = cellcount > 0;
+		cellcount = (pixmax.x - pixmin.x + 1) * (pixmax.y - pixmin.y + 1);
 
 		for (int x = pixmin.x; x <= pixmax.x; x++) {
 			for (int y = pixmin.y; y <= pixmax.y; y++) {
 				Vector2 point = pixels_point3D[x,y];
-				if (coll.OverlapPoint (point)) {
+				if (coll.OverlapPoint (point) || !foundone) {
 					Vector2 pointVelocity = r.GetPointVelocity (point)*h/N*magicnumber;
 					if (add) {
 						pixels_dynamiccount[x,y]++;
@@ -182,7 +184,7 @@ public class WaterForceControl : MonoBehaviour {
 				pixels_point3D [x, y] = new Vector2 (halfh+x*h/N, halfh+y*h/N);
 
 				if (pixels_point3D [x, y].y < 0) {
-					pixels_velocityx [x, y] = 1f;
+					//pixels_velocityx [x, y] = 1f;
 				}
 			}
 		}
