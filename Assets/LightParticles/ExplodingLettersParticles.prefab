@@ -131,7 +131,7 @@ ParticleSystem:
     serializedVersion: 3
     enabled: 1
     startLifetime:
-      scalar: 5
+      scalar: 120
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -149,7 +149,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0
+          value: 0.16666667
           inSlope: 0
           outSlope: 0
           tangentMode: 0
