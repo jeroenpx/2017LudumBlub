@@ -34,6 +34,10 @@ public class OctoCollision : MonoBehaviour {
 				lastMessageTime = Time.timeSinceLevelLoad;
 			}
 		} else {
+			if (coll.gameObject.name.StartsWith ("octopus")) {
+				return;
+			}
+
 			float collspeed = coll.relativeVelocity.magnitude;
 			if (collspeed > inktrigger) {
 				live -= collspeed;

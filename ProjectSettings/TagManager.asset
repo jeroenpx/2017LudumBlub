@@ -50,7 +50,7 @@ TagManager:
     locked: 0
   - name: Light
     uniqueID: 283854171
-    locked: 0
+    locked: 1
   - name: Ink
     uniqueID: 2011740493
     locked: 0
