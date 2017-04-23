@@ -119,7 +119,7 @@ MonoBehaviour:
   h: 15
   N: 50
   solveriter: 4
-  diffusion: 0
+  diffusion: 20
   viscosity: 0.2
   magicnumber: 0.01
   forcefeedback: 0.7
