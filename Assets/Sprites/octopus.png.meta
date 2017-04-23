@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: efb1c5ef334504d49895796b61dacc5d
-timeCreated: 1492955082
+timeCreated: 1492957357
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,8 @@ TextureImporter:
     21300018: oil_barrel
     21300020: fish_1
     21300022: schoen
+    21300024: pipe 1
+    21300026: pipe_vuilbak
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -232,6 +234,32 @@ TextureImporter:
         y: 481
         width: 150
         height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pipe 1
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 416
+        width: 140
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pipe_vuilbak
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 524
+        width: 140
+        height: 102
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
