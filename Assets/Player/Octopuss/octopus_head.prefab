@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 61741189880176278}
   - component: {fileID: 233356521568565734}
   - component: {fileID: 231218327423867194}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: octopus_tentacle_leftmost
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 61223203175663668}
   - component: {fileID: 233091085262878210}
   - component: {fileID: 231457210584477482}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: octopus_tentacle_innerleft (1)
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 50172297578992134}
   - component: {fileID: 61258837870314606}
   - component: {fileID: 233583861871357832}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: octopus_tentacle_innerright
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 50298369222355090}
   - component: {fileID: 61644392483634422}
   - component: {fileID: 233905856647441100}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: octopus_end_leftmost
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 50241827174465432}
   - component: {fileID: 61129032156989972}
   - component: {fileID: 233779268575214208}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: octopus_tentacle_innerright (1)
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 61432662624654188}
   - component: {fileID: 233480826887475882}
   - component: {fileID: 231133373602297686}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: octopus_tentacle_innerleft
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 50885082736736350}
   - component: {fileID: 61827886871593452}
   - component: {fileID: 233958666081909186}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: octopus_end_innerleft
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 61341920385242848}
   - component: {fileID: 233489441926125984}
   - component: {fileID: 231643647862460664}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: octopus_tentacle_leftmost (1)
   m_TagString: dynamic
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 61046615119777980}
   - component: {fileID: 50674454721210378}
   - component: {fileID: 233866780851592950}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: octopus_end_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017525337873436}
   m_LocalRotation: {x: -0, y: -0, z: 0.0000000026193443, w: 1}
-  m_LocalPosition: {x: -6.249612, y: -2.4497066, z: 0}
+  m_LocalPosition: {x: -7.89, y: -3.03, z: 0}
   m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_Children:
   - {fileID: 4985753304654722}
@@ -780,7 +780,7 @@ MonoBehaviour:
   useAcceleration: 0
   acceleration: {x: 0, y: 0}
   maxSpeed: 0
-  liveLostFactor: 0
+  liveLostFactor: 0.02
 --- !u!198 &198140862596242612
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -836,7 +836,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1827293295
+  randomSeed: -881174498
   InitialModule:
     serializedVersion: 3
     enabled: 1

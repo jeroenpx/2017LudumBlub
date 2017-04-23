@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1465822965707034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.15, y: -1.82, z: 0}
+  m_LocalPosition: {x: -4.165552, y: -0.30971444, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,6 +57,7 @@ MonoBehaviour:
   useAcceleration: 0
   acceleration: {x: 0, y: 0}
   maxSpeed: 0
+  liveLostFactor: 0.5
 --- !u!114 &114210281877121460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,7 +80,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1465822965707034}
   serializedVersion: 5
   lengthInSec: 5
-  simulationSpeed: 1
+  speed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -123,10 +124,10 @@ ParticleSystem:
       m_PostInfinity: 2
       m_RotationOrder: 4
     minMaxState: 0
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1643595672
+  randomSeed: 866119540
   InitialModule:
     serializedVersion: 3
     enabled: 1

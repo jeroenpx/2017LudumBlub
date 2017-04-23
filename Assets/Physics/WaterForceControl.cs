@@ -132,7 +132,10 @@ public class WaterForceControl : MonoBehaviour {
 		}
 
 		// Next line make sure that even tentacles (small) get the speed of a pixel
-		//foundone = cellcount > 0;
+		if (!coll.gameObject.name.StartsWith ("octopus")) {
+			// Not tentacles... But other things should also be affected if between pixels...
+			foundone = cellcount > 0;
+		}
 		if (!foundone) {
 			cellcount = (pixmax.x - pixmin.x + 1) * (pixmax.y - pixmin.y + 1);
 		}

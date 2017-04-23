@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4358532999026220}
   - component: {fileID: 212188691549173896}
-  - component: {fileID: 60806154497286982}
   - component: {fileID: 50671669724402722}
+  - component: {fileID: 60361289020190844}
   m_Layer: 0
   m_Name: Afval
-  m_TagString: Untagged
+  m_TagString: dynamic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,13 +56,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60806154497286982
+--- !u!60 &60361289020190844
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,11 +76,25 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 0.47552824, y: 0.15450847}
-      - {x: 0, y: 0.5}
-      - {x: -0.47552824, y: 0.15450859}
-      - {x: -0.29389268, y: -0.40450847}
-      - {x: 0.29389262, y: -0.40450853}
+    - - {x: 0.71999997, y: -0.155}
+      - {x: 0.68, y: -0.085}
+      - {x: 0.59, y: -0.005}
+      - {x: 0.39999998, y: 0.055}
+      - {x: 0.12, y: 0.225}
+      - {x: 0.02, y: 0.445}
+      - {x: -0.02, y: 0.515}
+      - {x: -0.66999996, y: 0.515}
+      - {x: -0.69, y: 0.315}
+      - {x: -0.75, y: 0.055}
+      - {x: -0.75, y: -0.355}
+      - {x: -0.72999996, y: -0.36499998}
+      - {x: -0.51, y: -0.48499998}
+      - {x: -0.32999998, y: -0.445}
+      - {x: 0.04, y: -0.515}
+      - {x: 0.48, y: -0.515}
+      - {x: 0.68, y: -0.475}
+      - {x: 0.75, y: -0.405}
+      - {x: 0.75, y: -0.255}
 --- !u!212 &212188691549173896
 SpriteRenderer:
   m_ObjectHideFlags: 1
