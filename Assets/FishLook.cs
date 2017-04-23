@@ -39,6 +39,8 @@ public class FishLook : MonoBehaviour {
 
 		#if UNITY_WEBGL
 		transform.localRotation = lookAt;
+		#elif UNITY_ANDROID
+		transform.localRotation = lookAt;
 		#else
 		transform.localRotation = Quaternion.Slerp(transform.localRotation, lookAt, percent);
 		#endif
