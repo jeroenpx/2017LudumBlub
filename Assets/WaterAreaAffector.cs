@@ -8,6 +8,7 @@ public class WaterAreaAffector : MonoBehaviour {
 
 	public Collider2D area;
 	public Vector2 velocity;
+    public bool local = false;
 
 	private WaterForceControl.Pixel[] pixels;
 
@@ -15,6 +16,8 @@ public class WaterAreaAffector : MonoBehaviour {
 	void Start () {
 		wfc = GameObject.FindGameObjectWithTag ("fluidsim").GetComponent<WaterForceControl>();
 		wfc.affectors += DoAffector;
+
+        if (local) velocity = transform.TransformVector(velocity);
 	}
 
 	// Update is called once per frame

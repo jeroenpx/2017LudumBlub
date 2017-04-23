@@ -6,4 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/testscene.unity
+    path: Assets/Scenes/Level01.unity
+  - enabled: 1
+    path: Assets/Scenes/Level02 - jets.unity
+  - enabled: 1
+    path: Assets/Scenes/Level03 - navigate.unity
+  - enabled: 1
+    path: Assets/Scenes/Level05_fishes.unity
