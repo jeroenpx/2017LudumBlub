@@ -7,14 +7,14 @@ public class ExplodingLetterParticleControl : MonoBehaviour {
     [SerializeField]
     private int nrParticlesForTitle = 1000;
     [SerializeField]
+    private float secondsToHoldTitle = 1;
+    [SerializeField]
     private Sprite title;
 
 	// Use this for initialization
 	void Start () {
         CreateInitialParticles();
-        StartCoroutine(ExplodeTitle(5));
-
-        Debug.Log("image dimensions = " + title.bounds);
+        StartCoroutine(ExplodeTitle(secondsToHoldTitle));
     }
 
     private void CreateInitialParticles()
