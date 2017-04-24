@@ -9,6 +9,9 @@ public class ForceController : MonoBehaviour {
 
 	public float forcefactor = 100f;
 
+	// Only apply force once you move your finger more than x units... (People have big fingers...)
+	public float mobileMinimalPrecisionLengthSteps = 0.5f;
+
 	// Use this for initialization
 	void Start () {
 		wfc = GameObject.FindGameObjectWithTag ("fluidsim").GetComponent<WaterForceControl>();
@@ -18,6 +21,8 @@ public class ForceController : MonoBehaviour {
 	void Update () {
 		Vector3 mousepos = Input.mousePosition;
 		bool touching = Input.GetKey (KeyCode.Mouse0);
+		bool applyprecisioncontrol = true;
+		bool waitforprecisetouch = false;
 
 		if (Input.touchCount > 0) {
 			Touch touch = Input.GetTouch (0); // get first touch since touch count is greater than zero
@@ -25,6 +30,7 @@ public class ForceController : MonoBehaviour {
 			if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved) {
 				mousepos = touch.position;
 				touching = true;
+				applyprecisioncontrol = true;
 			}
 		}
 
@@ -32,9 +38,18 @@ public class ForceController : MonoBehaviour {
 		Vector2 worldpos2D = new Vector2 (worldpos.x, worldpos.y);
 		//Debug.Log (worldpos2D);
 
-		if (touching) {
-			wfc.PushAt (worldpos2D, (worldpos2D - lastpos2D) * forcefactor);//new Vector2(100, 0));//;
+		if (applyprecisioncontrol) {
+			if ((worldpos2D - lastpos2D).magnitude < mobileMinimalPrecisionLengthSteps) {
+				waitforprecisetouch = true;
+				touching = false;
+			}
 		}
-		lastpos2D = worldpos2D;
+
+		if (touching) {
+			wfc.PushAt (lastpos2D, (worldpos2D - lastpos2D) * forcefactor);//new Vector2(100, 0));//;
+		}
+		if (!waitforprecisetouch) {
+			lastpos2D = worldpos2D;
+		}
 	}
 }
