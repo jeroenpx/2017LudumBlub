@@ -16,19 +16,32 @@ public class PortalVisuals : MonoBehaviour {
 
 	[SerializeField]
 	private float percentDelay=0;
+
+	[SerializeField]
+	private bool disable = false;
 	
 	private float currentPos = 0f;
 	
 	// Use this for initialization
 	void Start () {
-		target = ((OctoCollision)GameObject.FindObjectOfType(typeof(OctoCollision))).transform;
+		if (!disable) {
+			target = ((OctoCollision)GameObject.FindObjectOfType (typeof(OctoCollision))).transform;
+		} else {
+			currentPos = 1f;
+		}
+
+		if (ScoreKeeper.isRunning && ScoreKeeper.isTimeLapse) {
+			effectSpeed *= 2f;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		bool active = false;
-		if(Vector3.Distance(target.transform.position, transform.position)<distancelimit){
-			active = true;
+		if (!disable) {
+			if (Vector3.Distance (target.transform.position, transform.position) < distancelimit) {
+				active = true;
+			}
 		}
 		
 		currentPos=Mathf.Clamp01(currentPos+(active?1:-1)*Time.deltaTime*effectSpeed);
@@ -38,7 +51,7 @@ public class PortalVisuals : MonoBehaviour {
 		
 		GetComponent<Renderer>().material.SetFloat("_TransPos", Mathf.Clamp01((currentPos-percentDelay)/percentForActivation));
 
-		if (currentPos > 0.99f) {
+		if (!disable && currentPos > 0.99f) {
 			SendMessage("MessagePortalActive", SendMessageOptions.DontRequireReceiver);
 		}
 	}

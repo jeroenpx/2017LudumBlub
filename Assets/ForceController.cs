@@ -28,8 +28,8 @@ public class ForceController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 mousepos;
-		bool touching;
+		Vector3 mousepos = Vector3.zero;
+		bool touching = false;
 		bool wastouchdown = touchdown;
 		touchdown = false;
 
