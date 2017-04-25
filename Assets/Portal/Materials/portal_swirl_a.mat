@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: portal_swirl_a
+  m_Shader: {fileID: 4800000, guid: f302d021c7f61a444bd02bde2b925360, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _Detail
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _GlowTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 314c5d8872db0144b98de3800c762cba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 314c5d8872db0144b98de3800c762cba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTexOn
+      second:
+        m_Texture: {fileID: 2800000, guid: bb60b457426855f4a8221044376f9e61, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _TransitionTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 679bb8411e659244fa1578422b0a844b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _AlphaMultiplier
+      second: 1
+    - first:
+        name: _InitTransPerc
+      second: 0
+    - first:
+        name: _TransAll
+      second: 0
+    - first:
+        name: _TransGlowLength
+      second: 0.03
+    - first:
+        name: _TransMainLength
+      second: 0.19230768
+    - first:
+        name: _TransPos
+      second: 1
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}

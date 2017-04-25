@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Portal
+  m_Shader: {fileID: 4800000, guid: f302d021c7f61a444bd02bde2b925360, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _GlowOn
+      second:
+        m_Texture: {fileID: 2800000, guid: f6ed4c9e2b40ad648a1fbf1e24b7f142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _GlowTex
+      second:
+        m_Texture: {fileID: 2800000, guid: f6ed4c9e2b40ad648a1fbf1e24b7f142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 3252a28577af7454bb95cba5b264a543, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTexOn
+      second:
+        m_Texture: {fileID: 2800000, guid: b5869b21fd2731240ba905509ab4db78, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _TransitionTex
+      second:
+        m_Texture: {fileID: 2800000, guid: c785de6d838df0b4e830865a54d4d721, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _AlphaMultiplier
+      second: 1
+    - first:
+        name: _InitTransPerc
+      second: 0.05
+    - first:
+        name: _TransAll
+      second: 0
+    - first:
+        name: _TransGlowLength
+      second: 0.038461547
+    - first:
+        name: _TransMainLength
+      second: 0.06923077
+    - first:
+        name: _TransMax
+      second: 0.4307692
+    - first:
+        name: _TransMin
+      second: 0
+    - first:
+        name: _TransPos
+      second: 0
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}

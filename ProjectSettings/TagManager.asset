@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 3693709017
     locked: 0
+  - name: Portals
+    uniqueID: 912451209
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

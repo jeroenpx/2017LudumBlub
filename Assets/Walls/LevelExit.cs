@@ -14,4 +14,8 @@ public class LevelExit : MonoBehaviour {
             SceneManager.LoadScene(nextLevelName);
         }
     }
+
+	private void MessagePortalActive(){
+		SceneManager.LoadScene(nextLevelName);
+	}
 }
