@@ -13,8 +13,7 @@ public class ExplodingLetterParticleControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        CreateInitialParticles();
-        StartCoroutine(ExplodeTitle(secondsToHoldTitle));
+        StartCoroutine(ExplodeTitle());
     }
 
     private void CreateInitialParticles()
@@ -27,6 +26,7 @@ public class ExplodingLetterParticleControl : MonoBehaviour {
         
         for (int p=0; p<nrParticlesForTitle; ++p)
         {
+			parts [p].remainingLifetime = parts [p].startLifetime;
             do
             {
                 Vector3 newPos = Vector3.zero;
@@ -42,9 +42,10 @@ public class ExplodingLetterParticleControl : MonoBehaviour {
         _particleSys.Pause();
     }
 
-    private IEnumerator ExplodeTitle(float seconds)
+    private IEnumerator ExplodeTitle()
     {
-        yield return new WaitForSeconds(seconds);
+		CreateInitialParticles();
+		yield return new WaitForSeconds(secondsToHoldTitle);
         _particleSys.Play();
     }
 }

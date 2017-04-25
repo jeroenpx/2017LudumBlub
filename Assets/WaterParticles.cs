@@ -26,6 +26,10 @@ public class WaterParticles : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (psys.isPaused) {
+			return;
+		}
+
 		//psys.Emit (1);
 		int size = psys.GetParticles(particles);
 
